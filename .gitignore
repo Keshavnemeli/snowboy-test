@@ -49,6 +49,7 @@ Snowboy.pm
 /node_modules
 /lib/node/binding
 /lib/node/index.js
+/model
 
 /dist
 **/snowboy.egg-info

@@ -10,6 +10,7 @@ def check_enroll_output(enroll_ans):
     if enroll_ans == -1:
         raise Exception("Error initializing streams or reading audio data")
     elif enroll_ans == 1:
+        print('this works')
         raise Exception("Hotword is too long")
     elif enroll_ans == 2:
         raise Exception("Hotword is too short")
