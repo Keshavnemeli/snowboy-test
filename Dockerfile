@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 RUN apt update && apt --yes --force-yes install wget unzip build-essential python python-dev virtualenv portaudio19-dev
-RUN wget https://github.com/Keshavnemeli/snowboy-test/archive/refs/heads/main.zip && unzip main.zip && mv snowboy-test-main snowboy-master
+RUN wget https://github.com/Keshavnemeli/snowboy-test/archive/refs/heads/main.zip && unzip main.zip && mv snowboy-test-main snowboyMaster
 
 RUN cd snowboy-master/ && \
     virtualenv -p python2 venv/snowboy && \
