@@ -11,7 +11,7 @@ RUN cd snowboyMaster/ && \
 
 RUN apt -y remove wget unzip build-essential portaudio19-dev && apt -y autoremove && apt clean && rm -rf /var/lib/apt/lists/*
 
-CMD cd snowboyMaster/ && \
-    . venv/snowboy/bin/activate && \
-    cd examples/Python && \
-    python generate_pmdl.py -r1=model/record1.wav -r2=model/record2.wav -r3=model/record3.wav -lang=en -n=model/hotword.pmdl
+# CMD cd snowboyMaster/ && \
+#     . venv/snowboy/bin/activate && \
+#     cd examples/Python && \
+#     python generate_pmdl.py -r1=model/record1.wav -r2=model/record2.wav -r3=model/record3.wav -lang=en -n=model/hotword.pmdl
