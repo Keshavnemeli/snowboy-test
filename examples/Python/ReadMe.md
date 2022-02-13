@@ -52,7 +52,8 @@ This will save a the file in `model/hotword.pml`. Save or Download this file.
 
 ### Running the model
 We are using a demo app that snowboy is proving to run the model. 
-In a **64 bit Ubuntu 14.04** machine 
+In a **64 bit Ubuntu 14.04** machine.
+Note: This ubuntu machine should have a microphone and speaker devices for the demo to work or you'll get an error (no output devices). If we want to run it on a container we need to research on how to can we send audio stream from host device to the container. 
 
 Download this [demo app](https://s3-us-west-2.amazonaws.com/snowboy2/snowboy-releases/ubuntu1404-x86_64-1.3.0.tar.bz2)
 Install dependencies:
