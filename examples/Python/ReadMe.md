@@ -22,7 +22,7 @@ You might get an error saying `ImportError: No module named snowboy` in this cas
 
 *To run the container manually*,
 This is happening because the virtual environment snowboy is not getting activated using the dockerfile. Build the *ubuntu:16.04* image and run the container.
-You can manually sh into the container, download/wget this [file](https://github.com/seasalt-ai/snowboy/archive/master.zip) or clone this [repo](https://github.com/seasalt-ai/snowboy) and run the commands.
+You can manually sh into the container and download/wget this [file](https://github.com/seasalt-ai/snowboy/archive/master.zip) or clone this [repo](https://github.com/seasalt-ai/snowboy) (this is the same repo as mentioned in the Dockerfile) and run the commands.
 
 ```sh
 #To sh into container
