@@ -18,10 +18,10 @@ When running the `-v` copies the model folder from your host to the container
 docker run -it -v path/to/you/model:/snowboy-master/examples/Python/model snowboy-pmdl
 ```
 
-You might get an error saying `ImportError: No module named snowboy` in this case just remove the `CMD` command from the Dockerfile then build and run the container again.
+You might get an error saying `ImportError: No module named snowboy` in this case we need to run the commands manually.
 
 *To run the container manually*,
-This is happening because the virtual environment snowboy is not getting activated. Build the *ubuntu:16.04* image and run the container.
+This is happening because the virtual environment snowboy is not getting activated using the dockerfile. Build the *ubuntu:16.04* image and run the container.
 You can manually sh into the container, download/wget this [file](https://github.com/seasalt-ai/snowboy/archive/master.zip) or clone this [repo](https://github.com/seasalt-ai/snowboy) and run the commands.
 
 ```sh
