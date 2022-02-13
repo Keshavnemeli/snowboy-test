@@ -145,7 +145,7 @@ Go to the demo app folder, Run `python` in the command line. This will open an i
 Then speak "snowboy" into to your microphone to see whetheer Snowboy detects you. To use your personal model change `resources/snowboy.umdl` to your model path.
 
 **TODO**: 
-Backend: Listen for audio stream over http on a port and then pass the audio stream data into the detector object we've created above. Check the audio object type snowboydecoder.HotwordDetector accepts. Then we need to convert the audio stream to that object type. Run this on a server so that it accepts an audio stream and sends back an http response. 
+Backend: Based off the snowboydecoder.HotwordDetector object we can build a backend service. Listen for audio stream over http on a port and then pass the audio stream data into the detector object. Check the audio object type snowboydecoder.HotwordDetector accepts. Then we need to convert the audio stream to that object type. Run this on a server so that it accepts an audio stream and sends back an http response. 
 
 Frontend: Continously listen to the microphone of the user and whenever he speaks we need to send a request to the above backend with the payload as the audio stream and expect a response.
 
