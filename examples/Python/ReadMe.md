@@ -45,7 +45,7 @@ cd examples/Python
 python generate_pmdl.py -r1=model/record1.wav -r2=model/record2.wav -r3=model/record3.wav -lang=en -n=model/hotword.pmdl
 ```
 
-This will save a the file in `model/hotword.pml`. Save or Download this file.
+This will generate the file in `model/hotword.pml`. Save or Download this file.
 
 
 
