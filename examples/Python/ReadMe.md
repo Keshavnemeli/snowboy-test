@@ -3,8 +3,8 @@ Based of this [repo](https://github.com/seasalt-ai/snowboy)
 ### Building the model
 Record 3 wav files with your wakeword name them `record1.wav, record2.wav, record3.wav` .
     Make sure they are `16000 sample rate, 16 bits, 1 channel` . 
-    Use  tool like [audacity](https://www.audacityteam.org/download/windows/) to record or convert, if already recorded, to the above configuration. 
-    Follow this [tutorial](https://learn.adafruit.com/microcontroller-compatible-audio-file-conversion?view=all) to convert the files. Place these files in a `model` folder
+    Use  tool like [audacity](https://www.audacityteam.org/download/windows/) to record or convert to the above configuration. 
+    If already reacorded, Follow this [tutorial](https://learn.adafruit.com/microcontroller-compatible-audio-file-conversion?view=all) to convert the files using audacity. Place these files in a `model` folder
     
 To Build the image and running the container use this [Dockerfile](https://github.com/seasalt-ai/snowboy/blob/master/Dockerfile).
 
@@ -25,6 +25,9 @@ This is happening because the virtual environment snowboy is not getting activat
 You can manually sh into the container and download/wget this [file](https://github.com/seasalt-ai/snowboy/archive/master.zip) (then unzip) or clone this [repo](https://github.com/seasalt-ai/snowboy) (this is the same repo as mentioned in the Dockerfile) and run the commands.
 
 ```sh
+# After  running the container and downloading the snowboy repo, copy the model from host to the docker container
+docker cp /path/to/model <containerId>:/snowboy-master/examples/Python/model 
+
 #To sh into container
 docker exec it <container-name> /bin/bash
 ```
@@ -38,10 +41,12 @@ apt update && apt --yes --force-yes install wget unzip build-essential python py
 cd /snowboy-master
 virtualenv -p python2 venv/snowboy 
 
-#Activate it. You'll see a (snowboy) in the shell path.
+#Activate it and install requirements.txt. You'll see a (snowboy) in the shell path if the venv is activated.
 . venv/snowboy/bin/activate
+pip install -r requirements.txt
 
-cd examples/Python
+# Generate the model
+cd /snowboy-master/examples/Python
 python generate_pmdl.py -r1=model/record1.wav -r2=model/record2.wav -r3=model/record3.wav -lang=en -n=model/hotword.pmdl
 ```
 
@@ -49,16 +54,15 @@ This will generate the file in `model/hotword.pml`. Save or Download this file.
 
 
 
-
 ### Running the model
 We are using a demo app that snowboy is proving to run the model. 
 In a **64 bit Ubuntu 14.04** machine.
 
-*Note: This ubuntu machine should have microphone and speaker devices attacked with the appropriate drivers.
+*Note: This ubuntu machine should have microphone and speaker devices attached with the appropriate drivers.
 
 run the command `speaker-test` in the ubuntu machine to check for the speaker and install the drivers if they are not found.
 
-for the demo to work or you'll get an error (no output devices). If we want to run it on a container we need to research on how to can we send audio stream from host device to the container.*
+If they aren't installed you'll get an error (no output devices) when we running `python demo.py` in the end. If we want to run it on a container we need to research on how to can we send audio stream from host device to the container.*
 
 Download this [demo app](https://s3-us-west-2.amazonaws.com/snowboy2/snowboy-releases/ubuntu1404-x86_64-1.3.0.tar.bz2)
 Install dependencies:
@@ -85,7 +89,7 @@ Compile a supported swig version (3.0.10 or above)
     install -v -m755 -d /usr/share/doc/swig-3.0.10 &&
     cp -v -R Doc/* /usr/share/doc/swig-3.0.10
     
-Install these additional dependencies to aviod shared object file error or `GLIBCXX_3.4.20' not found error: 
+Install these additional dependencies to aviod shared object file error or `GLIBCXX_3.4.20 not found` error: 
 ```
 sudo apt-get install -y libatlas-base-dev libhdf5-dev libhdf5-serial-dev libatlas-base-dev libjasper-dev libqtgui4 libqt4-test
 
