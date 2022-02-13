@@ -58,11 +58,11 @@ This will generate the file in `model/hotword.pml`. Save or Download this file.
 We are using a demo app that snowboy is proving to run the model. 
 In a **64 bit Ubuntu 14.04** machine.
 
-*Note: This ubuntu machine should have microphone and speaker devices attached with the appropriate drivers.
+*Note: This ubuntu machine should have microphone and speaker devices attached with the appropriate drivers.*
 
-run the command `speaker-test` in the ubuntu machine to check for the speaker and install the drivers if they are not found.
+*run the command `speaker-test` in the ubuntu machine to check for the speaker and install the drivers if they are not found.*
 
-If they aren't installed you'll get an error (no output devices) when we running `python demo.py` in the end. If we want to run it on a container we need to research on how to can we send audio stream from host device to the container.*
+*If they aren't installed you'll get an error (no output devices) when we running `python demo.py` in the end. If we want to run it on a container we need to research on how to can we send audio stream from host device to the container.*
 
 Download this [demo app](https://s3-us-west-2.amazonaws.com/snowboy2/snowboy-releases/ubuntu1404-x86_64-1.3.0.tar.bz2)
 Install dependencies:
@@ -117,11 +117,11 @@ python demo.py resources/snowboy.umdl
 
 This should say `listening..` and when you say the word `snowboy` it should detect it. 
 
-To user personal model, Copy the generated model (hotword.pmdl) into resources folder and run the above python command with the arguments.  
+To user personal model, Copy the generated model (hotword.pmdl) into resources folder and run the above python command with the `resources/hotword.pmdl` argument.  
 
 If you are getting a `GLIBCXX_3.4.20' not found error`  run this command `strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX` to check if 3.4.20 is in the list if its not please update the gcc on the machine to 4.9. 
 
-If you are getting any python realated import errors. Create a virtualenv in the demo app and run the env.
+If you are getting any python realated import errors. Create a virtualenv in the demo app and run the env. Then run the demo.py.
 ```
 virtualenv -p python2 venv/snowboy 
 . venv/snowboy/bin/activate
@@ -142,10 +142,10 @@ Go to the demo app folder, Run `python` in the command line. This will open an i
     
     detector.start(detected_callback)
     
-Then speak "snowboy" to your microphone to see whetheer Snowboy detects you.
+Then speak "snowboy" into to your microphone to see whetheer Snowboy detects you. To use your personal model change `resources/snowboy.umdl` to your model path.
 
 **TODO**: 
-Backend: Listen for audio stream over http  on a port and then pass the audio stream into the detector object we've created above. Check the types of audio stream snowboydecoder.HotwordDetector accepts and convert the audio stream to that format. Run this on a server so that it accepts an audio stream and sends back an http response. 
+Backend: Listen for audio stream over http on a port and then pass the audio stream data into the detector object we've created above. Check the audio object type snowboydecoder.HotwordDetector accepts. Then we need to convert the audio stream to that object type. Run this on a server so that it accepts an audio stream and sends back an http response. 
 
 Frontend: Continously listen to the microphone of the user and whenever he speaks we need to send a request to the above backend with the payload as the audio stream and expect a response.
 
