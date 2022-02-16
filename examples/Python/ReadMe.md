@@ -35,7 +35,7 @@ docker exec it <container-name> /bin/bash
 #Inside the ubuntu container 
 
 #Install dependencies. if virutalenv doesn't exist try python-virtualenv
-apt update && apt --yes --force-yes install wget unzip build-essential python python-dev virtualenv portaudio19-dev
+apt update && apt --yes --force-yes install wget unzip build-essential python python-dev python-virtualenv portaudio19-dev
 
 #create virtual env if not created
 cd /snowboy-master
