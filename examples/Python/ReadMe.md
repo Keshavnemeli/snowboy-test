@@ -34,7 +34,7 @@ docker exec it <container-name> /bin/bash
 ```sh
 #Inside the ubuntu container 
 
-#Install dependencies
+#Install dependencies. if virutalenv doesn't exist try python-virtualenv
 apt update && apt --yes --force-yes install wget unzip build-essential python python-dev virtualenv portaudio19-dev
 
 #create virtual env if not created
