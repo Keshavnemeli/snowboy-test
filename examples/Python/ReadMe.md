@@ -101,8 +101,8 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 --slave 
             --without-maximum-compile-warnings &&
     make
     sudo make install &&
-    install -v -m755 -d /usr/share/doc/swig-3.0.10 &&
-    cp -v -R Doc/* /usr/share/doc/swig-3.0.10
+    sudo install -v -m755 -d /usr/share/doc/swig-3.0.10 &&
+    sudo cp -v -R Doc/* /usr/share/doc/swig-3.0.10
 ```
 
 cd into the demo app and run
