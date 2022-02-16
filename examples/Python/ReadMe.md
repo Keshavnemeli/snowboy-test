@@ -71,7 +71,7 @@ Install dependencies:
     
     pip install pyaudio
     
-    apt update && apt --yes --force-yes install wget unzip build-essential python python-dev virtualenv portaudio19-dev
+    sudo apt update && sudo apt --yes --force-yes install wget unzip build-essential python python-dev virtualenv portaudio19-dev
     
 Compile a supported swig version (3.0.10 or above)
     
@@ -80,14 +80,7 @@ Compile a supported swig version (3.0.10 or above)
     
     sudo apt-get install libpcre3 libpcre3-dev
     
-    # cd into the downloaded swig directory before running below commands
-    ./configure --prefix=/usr                  \
-            --without-clisp                    \
-            --without-maximum-compile-warnings &&
-    make
-    make install &&
-    install -v -m755 -d /usr/share/doc/swig-3.0.10 &&
-    cp -v -R Doc/* /usr/share/doc/swig-3.0.10
+
     
 Install these additional dependencies to aviod shared object file error or `GLIBCXX_3.4.20 not found` error: 
 ```
@@ -102,7 +95,14 @@ sudo apt-get update
 sudo apt-get install gcc-4.9 g++-4.9
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
 
-sudo apt-get install libatlas-base-dev
+#cd into the downloaded swig directory before running below commands and compile swig
+./configure --prefix=/usr                  \
+            --without-clisp                    \
+            --without-maximum-compile-warnings &&
+    make
+    sudo make install &&
+    install -v -m755 -d /usr/share/doc/swig-3.0.10 &&
+    cp -v -R Doc/* /usr/share/doc/swig-3.0.10
 ```
 
 cd into the demo app and run
